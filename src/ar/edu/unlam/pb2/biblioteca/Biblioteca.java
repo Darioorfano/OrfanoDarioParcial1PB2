@@ -3,16 +3,33 @@ package ar.edu.unlam.pb2.biblioteca;
 import java.util.ArrayList;
 
 public class Biblioteca {
-private ArrayList libros_Disponibles;
-private ArrayList libros_Prestados;
-private ArrayList lista_Prestamo;
+private ArrayList librosDisponibles;
+private ArrayList librosPrestados;
+private ArrayList listaPrestamo;
 
 public Biblioteca(){
 	
-	this.libros_Disponibles=new ArrayList<>();
-	this.libros_Prestados=new ArrayList<>();
-	this.lista_Prestamo=new ArrayList<>();
+	this.librosDisponibles=new ArrayList<>();
+	this.librosPrestados=new ArrayList<>();
+	this.listaPrestamo=new ArrayList<>();
 	
 }
+
+public void agregarLibro(Libro libro){
+	this.librosDisponibles.add(libro);
+	
+}
+
+public Boolean registrarPrestamo(Estudiante estudiante, Libro libro) {
+	if(estudiante.getCantidadLibrosPrestados()<2) {
+		this.librosDisponibles.remove(libro);
+		this.librosPrestados.add(libro);
+		
+		return true;
+	}
+	return false;
+}
+
+
 
 }
